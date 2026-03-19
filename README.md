@@ -20,6 +20,7 @@ app/
 		availability_parser.py
 		scheduler.py
 		recommendation_service.py
+streamlit_app.py
 sample_run.py
 requirements.txt
 .env.example
@@ -46,6 +47,29 @@ GEMINI_API_KEY=your_gemini_api_key
 GEMINI_MODEL=gemini-1.5-flash
 ```
 
+### Windows Troubleshooting (Python not found)
+
+If running `python` prints a Microsoft Store message, Python is not installed (or only the alias exists).
+
+1. Install Python 3.10+ from python.org or with winget:
+
+```powershell
+winget install Python.Python.3.12
+```
+
+2. Restart terminal and verify:
+
+```powershell
+python --version
+```
+
+3. Then run project setup:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -r requirements.txt
+```
+
 ## Run API
 
 ```bash
@@ -56,6 +80,20 @@ Open:
 
 - `http://127.0.0.1:8000/docs`
 - `http://127.0.0.1:8000/health`
+
+## Run Streamlit Frontend
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The UI includes:
+
+- Natural language and structured JSON input modes
+- Interactive interviewer table editor
+- Sample-data autofill
+- Top-slot cards, conflicts, reasoning, and strict JSON output preview
+- Run history panel
 
 ## API Contract
 

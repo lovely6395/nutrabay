@@ -2,7 +2,11 @@ import json
 import os
 from typing import Any, Dict, List
 
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:  # pragma: no cover
+    def load_dotenv() -> None:
+        return None
 
 try:
     import google.generativeai as genai
